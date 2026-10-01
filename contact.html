@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Contact - Folayemi Ewarawon (FOLLA)</title>
+<meta name="description" content="Start a conversation with product designer Folayemi Ewarawon. Project collaborations, product roles, advisory and speaking.">
+<link rel="canonical" href="https://iamfolla.github.io/folla-portfolio/contact.html">
+<meta property="og:title" content="Contact - Folayemi Ewarawon (FOLLA)">
+<meta property="og:description" content="Start a conversation with product designer Folayemi Ewarawon. Project collaborations, product roles, advisory and speaking.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://iamfolla.github.io/folla-portfolio/contact.html">
+<meta property="og:image" content="https://drive.google.com/thumbnail?id=12Acy5qBacx0K7Ac2f3bjDnSevJE3WrvH&amp;sz=w400">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #F5F4F0; --surface: #FFFFFF; --ink: #17191C; --muted: #6C7077;
+  --line: #D9D9D4; --accent: #1769E0; --dark: #111316; --dark-text: #F5F5F2;
+  --success: #237A4B; --error: #B42318;
+  --font-display: 'Fraunces', serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: JetBrains Mono, monospace;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1); --fast: 150ms; --base: 300ms; --slow: 600ms;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-body); background: var(--bg); color: var(--ink); line-height: 1.5; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+
+.container { max-width: 1440px; margin: 0 auto; padding: 0 clamp(20px, 4vw, 64px); }
+.eyebrow { font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 24px; }
+.h1 { font-family: var(--font-display); font-size: clamp(48px, 8vw, 120px); line-height: 0.95; letter-spacing: -0.02em; font-weight: 400; }
+.h2 { font-family: var(--font-display); font-size: clamp(36px, 5vw, 80px); line-height: 1; letter-spacing: -0.02em; font-weight: 400; }
+.h3 { font-family: var(--font-display); font-size: clamp(24px, 3vw, 40px); line-height: 1.1; font-weight: 400; }
+.body-lg { font-size: clamp(18px, 1.5vw, 22px); line-height: 1.5; color: var(--ink); }
+.body-md { font-size: 16px; line-height: 1.6; color: var(--muted); }
+
+/* PRELOADER */
+.preloader { position: fixed; inset: 0; z-index: 9999; background: var(--bg); display: flex; align-items: center; justify-content: center; transition: opacity 0.6s var(--ease), visibility 0.6s; }
+.preloader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+.preloader-wordmark { font-family: var(--font-display); font-size: clamp(48px, 12vw, 120px); letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink); clip-path: inset(0 100% 0 0); animation: wordmarkReveal 1s var(--ease) forwards; }
+@keyframes wordmarkReveal { to { clip-path: inset(0 0 0 0); } }
+
+/* HEADER */
+.site-header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 24px 0; transition: background var(--base) var(--ease), padding var(--base) var(--ease); }
+.site-header.scrolled { background: rgba(245, 244, 240, 0.9); backdrop-filter: blur(12px); padding: 16px 0; border-bottom: 1px solid var(--line); }
+.header-inner { display: flex; justify-content: space-between; align-items: center; }
+.logo { font-family: var(--font-display); font-size: 24px; letter-spacing: 0.05em; text-transform: uppercase; }
+.nav-links { display: flex; gap: 32px; align-items: center; }
+.nav-links a { font-size: 14px; font-weight: 500; position: relative; transition: color var(--fast); }
+.nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1px; background: var(--ink); transition: width var(--base) var(--ease); }
+.nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+.nav-contact { padding: 8px 16px; border: 1px solid var(--ink); border-radius: 999px; font-size: 14px; font-weight: 500; transition: background var(--fast), color var(--fast); }
+.nav-contact:hover { background: var(--ink); color: var(--bg); }
+.menu-toggle { display: none; width: 32px; height: 32px; flex-direction: column; justify-content: center; gap: 6px; }
+.menu-toggle span { display: block; width: 100%; height: 2px; background: var(--ink); transition: transform var(--base), opacity var(--base); }
+.menu-toggle.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+.menu-toggle.active span:nth-child(2) { opacity: 0; }
+.menu-toggle.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+/* MOBILE MENU */
+.mobile-menu { position: fixed; inset: 0; z-index: 99; background: var(--bg); display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 32px; opacity: 0; visibility: hidden; transition: opacity var(--base), visibility var(--base); }
+.mobile-menu.open { opacity: 1; visibility: visible; }
+.mobile-menu a { font-family: var(--font-display); font-size: 48px; }
+
+/* HERO */
+.hero { padding: 160px 0 80px; min-height: 90vh; display: flex; flex-direction: column; justify-content: center; }
+.hero-headline { margin-bottom: 48px; }
+.hero-headline .word { display: inline-block; overflow: hidden; vertical-align: top; }
+.hero-headline .word span { display: inline-block; transform: translateY(100%); animation: slideUp 0.8s var(--ease) forwards; }
+@keyframes slideUp { to { transform: translateY(0); } }
+.hero-meta { display: flex; gap: 48px; flex-wrap: wrap; margin-top: 64px; }
+.hero-meta-item { display: flex; flex-direction: column; gap: 8px; }
+.hero-meta-label { font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); }
+.hero-meta-value { font-size: 16px; font-weight: 500; }
+
+/* MARQUEE */
+.marquee { padding: 48px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); overflow: hidden; white-space: nowrap; }
+.marquee-track { display: inline-flex; gap: 64px; animation: marquee 40s linear infinite; }
+.marquee:hover .marquee-track { animation-play-state: paused; }
+.marquee-item { font-family: var(--font-display); font-size: 32px; color: var(--muted); display: flex; align-items: center; gap: 64px; }
+.marquee-item img { height: 40px; width: auto; object-fit: contain; filter: grayscale(1); opacity: 0.6; transition: opacity var(--base), filter var(--base); }
+.marquee-item img:hover { opacity: 1; filter: grayscale(0); }
+@keyframes marquee { to { transform: translateX(-50%); } }
+
+/* PROJECTS LIST */
+.projects-section { padding: 120px 0; }
+.project-list { display: flex; flex-direction: column; border-top: 1px solid var(--line); }
+.project-row { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; padding: 48px 0; border-bottom: 1px solid var(--line); cursor: pointer; position: relative; transition: padding var(--base) var(--ease); }
+.project-row:hover { padding: 64px 0; }
+.project-title { font-family: var(--font-display); font-size: clamp(32px, 4vw, 56px); line-height: 1.1; transition: color var(--base); }
+.project-row:hover .project-title { color: var(--accent); }
+.project-meta { display: flex; flex-direction: column; justify-content: center; gap: 16px; }
+.project-meta-row { display: flex; justify-content: space-between; font-size: 14px; }
+.project-meta-label { color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
+.project-preview { position: fixed; width: 300px; height: 200px; pointer-events: none; z-index: 50; opacity: 0; transform: translate(-50%, -50%) scale(0.8); transition: opacity 0.3s, transform 0.3s; border-radius: 8px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+.project-preview.active { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+.project-preview img { width: 100%; height: 100%; object-fit: cover; }
+
+/* CAPABILITIES */
+.capabilities-section { padding: 120px 0; }
+.capability-list { display: flex; flex-direction: column; gap: 48px; margin-top: 64px; }
+.capability-item { display: grid; grid-template-columns: 80px 1fr 2fr; gap: 32px; align-items: baseline; padding-bottom: 32px; border-bottom: 1px solid var(--line); }
+.capability-num { font-family: var(--font-mono); font-size: 14px; color: var(--muted); }
+.capability-title { font-family: var(--font-display); font-size: clamp(24px, 3vw, 36px); }
+.capability-desc { font-size: 16px; line-height: 1.6; color: var(--muted); }
+
+/* PLAYGROUND */
+.playground-section { padding: 120px 0; background: var(--surface); }
+.playground-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px; margin-top: 64px; }
+.playground-card { position: relative; aspect-ratio: 4/5; overflow: hidden; border-radius: 8px; cursor: pointer; transition: transform var(--base) var(--ease); }
+.playground-card:hover { transform: translateY(-8px); }
+.playground-card img { width: 100%; height: 100%; object-fit: cover; transition: transform var(--slow) var(--ease); }
+.playground-card:hover img { transform: scale(1.05); }
+.playground-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.6), transparent); opacity: 0; transition: opacity var(--base); display: flex; align-items: flex-end; padding: 24px; }
+.playground-card:hover .playground-overlay { opacity: 1; }
+.playground-overlay-text { color: white; font-size: 14px; font-weight: 500; }
+
+/* LIGHTBOX */
+.lightbox { position: fixed; inset: 0; z-index: 200; background: rgba(0,0,0,0.9); display: flex; align-items: center; justify-content: center; opacity: 0; visibility: hidden; transition: opacity var(--base), visibility var(--base); }
+.lightbox.open { opacity: 1; visibility: visible; }
+.lightbox-img { max-width: 90vw; max-height: 90vh; object-fit: contain; }
+.lightbox-close { position: absolute; top: 24px; right: 24px; color: white; font-size: 32px; }
+.lightbox-nav { position: absolute; top: 50%; transform: translateY(-50%); color: white; font-size: 48px; padding: 24px; }
+.lightbox-prev { left: 0; }
+.lightbox-next { right: 0; }
+
+/* CONTACT */
+.contact-section { padding: 120px 0; background: var(--dark); color: var(--dark-text); }
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; margin-top: 64px; }
+.contact-form { display: flex; flex-direction: column; gap: 24px; }
+.form-group { display: flex; flex-direction: column; gap: 8px; }
+.form-label { font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.6); }
+.form-input, .form-select, .form-textarea { background: transparent; border: none; border-bottom: 1px solid rgba(255,255,255,0.2); padding: 12px 0; font-size: 16px; color: white; outline: none; transition: border-color var(--base); }
+.form-input:focus, .form-select:focus, .form-textarea:focus { border-bottom-color: white; }
+.form-textarea { resize: vertical; min-height: 120px; }
+.form-select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 0 center; }
+.form-select option { background: var(--dark); color: white; }
+.form-btn { padding: 16px 32px; background: white; color: var(--dark); font-weight: 600; border-radius: 999px; align-self: flex-start; transition: transform var(--fast), opacity var(--fast); }
+.form-btn:hover { transform: translateY(-2px); }
+.form-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+.form-status { font-size: 14px; min-height: 20px; }
+.form-status.success { color: var(--success); }
+.form-status.error { color: var(--error); }
+.form-error { font-size: 12px; color: var(--error); min-height: 16px; }
+
+/* FOOTER */
+.site-footer { padding: 64px 0; border-top: 1px solid var(--line); }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; }
+.footer-col h4 { font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 16px; }
+.footer-col a { display: block; font-size: 14px; margin-bottom: 8px; transition: color var(--fast); }
+.footer-col a:hover { color: var(--accent); }
+.footer-bottom { margin-top: 64px; padding-top: 24px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; font-size: 12px; color: var(--muted); }
+
+/* REVEAL */
+.reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s var(--ease), transform 0.8s var(--ease); }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .nav-links { display: none; }
+  .menu-toggle { display: flex; }
+  .project-row { grid-template-columns: 1fr; gap: 16px; }
+  .capability-item { grid-template-columns: 40px 1fr; gap: 16px; }
+  .capability-desc { grid-column: 1 / -1; margin-top: 8px; }
+  .contact-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+  .project-preview { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+  .reveal { opacity: 1; transform: none; }
+  .marquee-track { animation: none; }
+}
+  
+.skip-link{position:absolute;left:-9999px;top:0;background:var(--ink);color:var(--bg);padding:12px 20px;z-index:10000;border-radius:0 0 8px 0}
+.skip-link:focus{left:0}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.logo-img{height:28px;width:auto}
+.section{padding:clamp(72px,9vw,140px) 0}
+.btn{display:inline-block;padding:14px 28px;border-radius:999px;font-weight:600;font-size:15px;border:1px solid var(--ink);transition:background .2s,color .2s,transform .2s}
+.btn:hover{background:var(--ink);color:var(--bg);transform:translateY(-2px)}
+.btn-solid{background:var(--ink);color:var(--bg)}
+.btn-solid:hover{background:transparent;color:var(--ink)}
+.tag-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:32px}
+.tag{padding:8px 16px;border:1px solid var(--line);border-radius:999px;font-size:13px;color:var(--muted)}
+.hero-cta-row{display:flex;gap:16px;flex-wrap:wrap;margin-top:40px}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:64px}
+@media(max-width:900px){.grid-2{grid-template-columns:1fr}}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:24px;margin:40px 0;padding:24px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.fact-label{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+.fact-value{font-size:15px;font-weight:500;margin-top:6px}
+.case-block{margin:48px 0}
+.case-block h2{font-family:var(--font-display);font-size:clamp(24px,3vw,36px);margin-bottom:16px}
+.case-block p{font-size:16px;line-height:1.7;color:var(--muted);max-width:70ch}
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:24px}
+.gallery img{border-radius:8px;aspect-ratio:16/10;object-fit:cover;width:100%}
+.crumbs{font-size:13px;color:var(--muted);margin-bottom:32px}
+.crumbs a:hover{color:var(--accent)}
+.pn-nav{display:flex;justify-content:space-between;gap:16px;margin-top:64px;padding-top:32px;border-top:1px solid var(--line);font-size:14px;flex-wrap:wrap}
+.timeline{margin-top:48px;border-top:1px solid var(--line)}
+.tl-row{display:grid;grid-template-columns:160px 1fr;gap:24px;padding:28px 0;border-bottom:1px solid var(--line)}
+.tl-year{font-family:var(--font-mono);font-size:13px;color:var(--muted)}
+.tl-role{font-size:18px;font-weight:600}
+.tl-org{font-size:14px;color:var(--muted);margin-top:4px}
+@media(max-width:700px){.tl-row{grid-template-columns:1fr;gap:8px}}
+.filter-row{display:flex;flex-wrap:wrap;gap:10px;margin:32px 0}
+.filter-btn{padding:8px 18px;border:1px solid var(--line);border-radius:999px;font-size:13px;color:var(--muted)}
+.filter-btn[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.hp{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.notfound{min-height:80vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:24px}
+.pg-copy{max-width:60ch}
+.statement{font-family:var(--font-display);font-size:clamp(24px,3.4vw,44px);line-height:1.25;text-align:center;max-width:34ch;margin:0 auto}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="preloader" aria-hidden="true"><div class="preloader-wordmark">FOLLA</div></div><header class="site-header"><div class="container header-inner"><a class="logo" href="index.html" aria-label="FOLLA home"><span class="logo">FOLLA</span></a><nav class="nav-links" aria-label="Primary"><a href="work.html">Work</a><a href="about.html">About</a><a href="playground.html">Playground</a><a class="nav-contact" href="contact.html" aria-current="page">Contact</a></nav><button class="menu-toggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button></div></header><nav class="mobile-menu" aria-label="Mobile"><a href="work.html">Work</a><a href="about.html">About</a><a href="playground.html">Playground</a><a href="contact.html">Contact</a></nav><main id="main"><section class="section contact-section" style="min-height:90vh"><div class="container"><div class="grid-2"><div><p class="eyebrow reveal">CONTACT / OPEN A CONVERSATION</p><h1 class="h2 reveal">Tell me what you are building.</h1><p class="body-lg reveal" style="margin:24px 0 32px;max-width:44ch">Have a product challenge, an opportunity or an idea worth exploring? Share a little context below. I will review your message and respond by email.</p><p class="reveal"><a style="color:var(--dark-text);text-decoration:underline" href="mailto:iamfolla.ng@gmail.com">iamfolla.ng@gmail.com</a></p><p class="body-md reveal" style="margin-top:24px;color:rgba(255,255,255,.6)">Abuja, Nigeria &middot; Open to global remote engagements and relocation</p></div><div class="reveal"><form class="contact-form" data-endpoint="https://script.google.com/macros/s/AKfycbxcjEFp5CHUnUe_CYNhI6lNkCfRq8yhz2W5QjaBv1iaumRLPFWcx2UQsrHb13_Dgw5Q/exec" novalidate><div class="form-group"><label class="form-label" for="f-name">Name</label><input class="form-input" id="f-name" name="name" type="text" autocomplete="name" required><span class="form-error" data-error="name"></span></div><div class="form-group"><label class="form-label" for="f-email">Email</label><input class="form-input" id="f-email" name="email" type="email" autocomplete="email" required><span class="form-error" data-error="email"></span></div><div class="form-group"><label class="form-label" for="f-enquiry">Enquiry type</label><select class="form-select" id="f-enquiry" name="enquiry" required><option value="">Select&hellip;</option><option>Project collaboration</option><option>Product role</option><option>Advisory</option><option>Speaking</option><option>Other</option></select><span class="form-error" data-error="enquiry"></span></div><div class="form-group"><label class="form-label" for="f-message">Message</label><textarea class="form-textarea" id="f-message" name="message" required></textarea><span class="form-error" data-error="message"></span></div><div class="hp" aria-hidden="true"><label>Company website (leave this field blank)</label><input name="company_website" tabindex="-1" autocomplete="off"></div><button class="form-btn" type="submit">Send Details</button><p class="form-status" role="status" aria-live="polite"></p><p class="body-md" style="color:rgba(255,255,255,.6)">Your details are used only to respond to this enquiry. Please do not include sensitive personal or confidential information.</p></form></div></div></div></section></main>
+<footer class="site-footer"><div class="container"><div class="footer-grid"><div class="footer-col"><span class="logo">FOLLA</span><p class="body-md" style="margin-top:16px">Product Design &middot; Product Strategy &middot; Data Intelligence</p><p class="body-md">Abuja, Nigeria</p></div><div class="footer-col"><h4>Site</h4><a href="work.html">Work</a><a href="about.html">About</a><a href="playground.html">Playground</a><a href="contact.html">Contact</a></div><div class="footer-col"><h4>Elsewhere</h4><a href="https://linkedin.com/in/iamfolla" rel="noopener" target="_blank">LinkedIn</a><a href="https://behance.net/iamfolla" rel="noopener" target="_blank">Behance</a><a href="https://github.com/iamfolla" rel="noopener" target="_blank">GitHub</a></div><div class="footer-col"><h4>Contact</h4><a href="mailto:iamfolla.ng@gmail.com">iamfolla.ng@gmail.com</a></div></div><div class="footer-bottom"><span>&copy; 2026 Folayemi Ewarawon. All rights reserved.</span><span>Built with the FOLLA OS</span></div></div></footer><div class="project-preview" aria-hidden="true"><img alt=""></div><div class="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer"><button class="lightbox-close" aria-label="Close viewer">&times;</button><button class="lightbox-nav lightbox-prev" aria-label="Previous image">&#8249;</button><img class="lightbox-img" alt="Playground artwork"><button class="lightbox-nav lightbox-next" aria-label="Next image">&#8250;</button></div><script>
+  (function() {
+    // Preloader
+    window.addEventListener('load', function() {
+      setTimeout(function() {
+        var p = document.querySelector('.preloader');
+        if (p) p.classList.add('hidden');
+      }, 800);
+    });
+
+    // Header scroll
+    var header = document.querySelector('.site-header');
+    window.addEventListener('scroll', function() {
+      if (window.scrollY > 50) header.classList.add('scrolled');
+      else header.classList.remove('scrolled');
+    });
+
+    // Mobile menu
+    var toggle = document.querySelector('.menu-toggle');
+    var mobileMenu = document.querySelector('.mobile-menu');
+    if (toggle) {
+      toggle.addEventListener('click', function() {
+        toggle.classList.toggle('active');
+        mobileMenu.classList.toggle('open');
+        document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+      });
+      mobileMenu.querySelectorAll('a').forEach(function(a) {
+        a.addEventListener('click', function() {
+          toggle.classList.remove('active');
+          mobileMenu.classList.remove('open');
+          document.body.style.overflow = '';
+        });
+      });
+    }
+
+    // Reveal on scroll
+    var io = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(function(el) { io.observe(el); });
+
+    // Project hover preview
+    var preview = document.querySelector('.project-preview');
+    var previewImg = preview ? preview.querySelector('img') : null;
+    document.querySelectorAll('.project-row').forEach(function(row) {
+      row.addEventListener('mouseenter', function() {
+        var img = row.getAttribute('data-img');
+        if (img && preview && previewImg) {
+          previewImg.src = img;
+          preview.classList.add('active');
+        }
+      });
+      row.addEventListener('mouseleave', function() {
+        if (preview) preview.classList.remove('active');
+      });
+      row.addEventListener('mousemove', function(e) {
+        if (preview) {
+          preview.style.left = e.clientX + 'px';
+          preview.style.top = e.clientY + 'px';
+        }
+      });
+    });
+
+    // Lightbox
+    var lightbox = document.querySelector('.lightbox');
+    var lbImg = lightbox ? lightbox.querySelector('.lightbox-img') : null;
+    var lbItems = [];
+    var lbIndex = 0;
+
+    function openLightbox(index) {
+      lbIndex = index;
+      if (lbImg && lbItems[index]) {
+        lbImg.src = lbItems[index].src;
+        lightbox.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+    function closeLightbox() {
+      if (lightbox) {
+        lightbox.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+    }
+
+    document.querySelectorAll('.playground-card').forEach(function(card, i) {
+      var img = card.querySelector('img');
+      if (img) {
+        lbItems.push(img);
+        card.addEventListener('click', function() { openLightbox(i); });
+      }
+    });
+
+    if (lightbox) {
+      lightbox.querySelector('.lightbox-close').addEventListener('click', closeLightbox);
+      lightbox.querySelector('.lightbox-prev').addEventListener('click', function() {
+        lbIndex = (lbIndex - 1 + lbItems.length) % lbItems.length;
+        lbImg.src = lbItems[lbIndex].src;
+      });
+      lightbox.querySelector('.lightbox-next').addEventListener('click', function() {
+        lbIndex = (lbIndex + 1) % lbItems.length;
+        lbImg.src = lbItems[lbIndex].src;
+      });
+      lightbox.addEventListener('click', function(e) {
+        if (e.target === lightbox) closeLightbox();
+      });
+      document.addEventListener('keydown', function(e) {
+        if (!lightbox.classList.contains('open')) return;
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowLeft') lightbox.querySelector('.lightbox-prev').click();
+        if (e.key === 'ArrowRight') lightbox.querySelector('.lightbox-next').click();
+      });
+    }
+
+    // Contact Form
+    var form = document.querySelector('.contact-form');
+    if (form) {
+      var endpoint = form.getAttribute('data-endpoint');
+      var statusEl = form.querySelector('.form-status');
+      var btn = form.querySelector('.form-btn');
+
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        var errors = form.querySelectorAll('.form-error');
+        errors.forEach(function(el) { el.textContent = ''; });
+        statusEl.textContent = '';
+        statusEl.className = 'form-status';
+
+        var data = {
+          name: form.querySelector('[name="name"]').value.trim(),
+          email: form.querySelector('[name="email"]').value.trim(),
+          enquiry: form.querySelector('[name="enquiry"]').value,
+          message: form.querySelector('[name="message"]').value.trim(),
+          company_website: form.querySelector('[name="company_website"]').value
+        };
+
+        var valid = true;
+        if (data.name.length < 2) { form.querySelector('[data-error="name"]').textContent = 'Please enter your name.'; valid = false; }
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) { form.querySelector('[data-error="email"]').textContent = 'Please enter a valid email.'; valid = false; }
+        if (!data.enquiry) { form.querySelector('[data-error="enquiry"]').textContent = 'Please select an enquiry type.'; valid = false; }
+        if (data.message.length < 20) { form.querySelector('[data-error="message"]').textContent = 'Message must be at least 20 characters.'; valid = false; }
+
+        if (!valid) return;
+
+        btn.disabled = true;
+        btn.textContent = 'Sending...';
+
+        fetch(endpoint, {
+          method: 'POST',
+          body: JSON.stringify(data),
+          redirect: 'follow'
+        })
+        .then(function(res) { return res.json(); })
+        .then(function(res) {
+          if (res.ok) {
+            statusEl.textContent = 'Thanks, your message has been sent. I will reply by email.';
+            statusEl.classList.add('success');
+            form.reset();
+          } else {
+            throw new Error('Server error');
+          }
+        })
+        .catch(function() {
+          statusEl.textContent = 'Your message could not be sent. Please try again or email iamfolla.ng@gmail.com.';
+          statusEl.classList.add('error');
+        })
+        .finally(function() {
+          btn.disabled = false;
+          btn.textContent = 'Send Details';
+        });
+      });
+    }
+  })();
+  </script>
+</body>
+</html>
