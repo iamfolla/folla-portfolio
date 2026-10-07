@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Fraunces:opsz,wght@9..144,500&display=swap" rel="stylesheet">
 
-  <!-- Favicon (replace with your own) -->
+  <!-- Favicon -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='40' fill='%23A78BFA'/></svg>">
 
   <style>
@@ -42,26 +42,27 @@
       font-family: var(--font-sans);
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
-      /* Prevent iOS rubber-band on the wrapper itself */
       overscroll-behavior: none;
       position: fixed;
       inset: 0;
     }
 
     /* ============================================================
-       LOADING SCREEN
+       LOADER — TRANSPARENT OVERLAY
+       No background. Cannot hide the site. Fades out on its own.
        ============================================================ */
     #loader {
       position: fixed;
       inset: 0;
       z-index: 10;
-      background: var(--bg);
+      background: transparent;   /* ← no black background */
       display: flex;
       align-items: center;
       justify-content: center;
       flex-direction: column;
       gap: 1.75rem;
-      transition: opacity 0.8s var(--ease-out), visibility 0.8s;
+      pointer-events: none;       /* ← never blocks clicks */
+      transition: opacity 0.6s var(--ease-out), visibility 0.6s;
     }
     #loader.done {
       opacity: 0;
@@ -78,6 +79,7 @@
       color: var(--text);
       display: flex;
       gap: 0.02em;
+      mix-blend-mode: difference;   /* keeps it legible on any bg */
     }
     .loader-mark span {
       display: inline-block;
@@ -118,23 +120,21 @@
     }
 
     /* ============================================================
-       IFRAME — full-bleed, no borders
+       IFRAME — visible immediately, no waiting for load event
        ============================================================ */
     #app-frame {
       position: fixed;
-      /* Push up by 60px to hide the Apps Script attribution bar */
       top: 0;
       left: 0;
       width: 100%;
-      height: calc(100% + 60px);
+      height: calc(100% + 60px);   /* hides Apps Script attribution bar */
       border: 0;
       display: block;
       background: var(--bg);
-      opacity: 0;
-      transition: opacity 0.6s var(--ease-out);
+      opacity: 1;                   /* ← always visible */
+      transition: opacity 0.4s var(--ease-out);
       color-scheme: dark;
     }
-    #app-frame.ready { opacity: 1; }
 
     /* Fallback for users with JS disabled */
     .no-js {
@@ -165,14 +165,7 @@
 </head>
 <body>
 
-  <!-- ================= LOADING SCREEN ================= -->
-  <div id="loader">
-    <div class="loader-mark" id="loader-mark"></div>
-    <div class="loader-bar"></div>
-    <div class="loader-status">Loading portfolio</div>
-  </div>
-
-  <!-- ================= IFRAME ================= -->
+  <!-- ================= IFRAME (renders from the very first paint) ================= -->
   <iframe
     id="app-frame"
     src="https://script.google.com/macros/s/AKfycbyWQDNAZD9J2OF5yHDxL3yavsob_PMGG5uBsXDB8cL1V54FxK6dUTSw8-bZI3ktVotYmg/exec"
@@ -183,6 +176,13 @@
     sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation allow-modals"
     aria-label="Portfolio application"
   ></iframe>
+
+  <!-- ================= TRANSPARENT LOADER OVERLAY ================= -->
+  <div id="loader" aria-hidden="true">
+    <div class="loader-mark" id="loader-mark"></div>
+    <div class="loader-bar"></div>
+    <div class="loader-status">Loading portfolio</div>
+  </div>
 
   <!-- ================= NO-JS FALLBACK ================= -->
   <noscript>
@@ -214,34 +214,28 @@
         loaderMark.appendChild(span);
       });
 
-      // ---------- Reveal frame when ready ----------
-      var revealed = false;
-      function reveal() {
-        if (revealed) return;
-        revealed = true;
-        frame.classList.add('ready');
-        // Small delay so frame fades in before loader fades out
-        setTimeout(function () {
-          loader.classList.add('done');
-        }, 250);
+      // ---------- Fade the loader out (iframe is already visible) ----------
+      var hidden = false;
+      function hideLoader() {
+        if (hidden) return;
+        hidden = true;
+        loader.classList.add('done');
       }
 
-      // Fires when iframe DOM is loaded (may fire before visual content renders)
+      // Hide as soon as the iframe has painted something
       frame.addEventListener('load', function () {
-        // Give the inner page a beat to run its own preloader
-        setTimeout(reveal, 400);
+        setTimeout(hideLoader, 500);
       });
 
-      // Failsafe: if load event never fires, reveal after 6s
-      setTimeout(reveal, 6000);
+      // Failsafe: hide after 3s no matter what
+      setTimeout(hideLoader, 3000);
 
-      // ---------- Block the iframe from navigating the top window ----------
-      // Apps Script sometimes tries to top-navigate; this keeps the shell stable.
-      window.addEventListener('beforeunload', function () {
-        // no-op — just ensures the listener exists
+      // Extra failsafe: hide as soon as the user interacts
+      ['click', 'touchstart', 'keydown', 'scroll', 'mousemove'].forEach(function (evt) {
+        window.addEventListener(evt, hideLoader, { once: true, passive: true });
       });
 
-      // ---------- Prevent double-tap zoom on iOS in the wrapper ----------
+      // ---------- Prevent double-tap zoom on iOS ----------
       var lastTouch = 0;
       document.addEventListener('touchend', function (e) {
         var now = Date.now();
@@ -251,15 +245,7 @@
         lastTouch = now;
       }, { passive: false });
 
-      // ---------- Keyboard: allow focus into iframe for accessibility ----------
-      document.addEventListener('keydown', function (e) {
-        if (e.key === 'Tab' && document.activeElement !== frame) {
-          // Let natural tab order proceed
-        }
-      });
-
-      // ---------- Deep-link support: pass hash through to iframe ----------
-      // If visitor lands on yoursite.com/#post-slug, forward it into the app
+      // ---------- Deep-link support ----------
       if (window.location.hash) {
         var tryForward = setInterval(function () {
           try {
